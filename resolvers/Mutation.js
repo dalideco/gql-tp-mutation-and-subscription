@@ -35,13 +35,13 @@ export const Mutation = {
             !db.students.find(({ id }) => id == updateTodoInput.studentId)
         ) {
             //throw error if trying to update to a student thatdoes not exists
-            throw new Error(`Le user d'id ${updateTodoInput.studentId} n'existe pas`);
+            throw new Error(`student id ${updateTodoInput.studentId} does not exist`);
         }
         //finding old todo
         const todo = db.todos.find((todoItem) => todoItem.id === id);
         if (!todo) {
             //if not found throw error
-            throw new Error(`Le todo d'id ${id} n'existe pas`);
+            throw new Error(`todo id ${id} does not exist`);
         }
         //change values
         for (let key in updateTodoInput) {
@@ -57,7 +57,7 @@ export const Mutation = {
         const indexTodo = db.todos.findIndex((todo) => todo.id === id);
         if (indexTodo === -1) {
             //if not found throw error
-            throw new Error("Todo innexistant");
+            throw new Error("Todo id doesn not exist");
         }
         //removing from db
         const [todo] = db.todos.splice(indexTodo, 1);
